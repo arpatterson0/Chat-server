@@ -28,7 +28,7 @@ public class Client {
             System.out.print("\nClient: ");
             String Clientdata = sc.nextLine();
             sendbuffer = Clientdata.getBytes();
-            DatagramPacket sendPacket = new DatagramPacket(sendbuffer, sendbuffer.length, IP, 9876); 
+            DatagramPacket sendPacket = new DatagramPacket(sendbuffer, sendbuffer.length, IP, 9876); // send packets to the server
             clientsocket.send(sendPacket);
             if(Clientdata.equalsIgnoreCase("bye"))
             {
@@ -38,7 +38,7 @@ public class Client {
             DatagramPacket receivePacket = new DatagramPacket(receivebuffer, receivebuffer.length);
             clientsocket.receive(receivePacket);
             String serverData = new String(receivePacket.getData());
-            System.out.print("\nServer: " + serverData);
+            System.out.print("\nServer1: " + serverData);
         }
     }
 }

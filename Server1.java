@@ -24,18 +24,18 @@ public class Server1 {
        while(true){
            byte[] recievebuffer = new byte[1024];
            byte[] sendbuffer = new byte[1024];
-           DatagramPacket recvdpkt = new DatagramPacket(recievebuffer, recievebuffer.length);
+           DatagramPacket recvdpkt = new DatagramPacket(recievebuffer, recievebuffer.length);// implementing UDP
            serverSocket.receive(recvdpkt);
            InetAddress IP = recvdpkt.getAddress();
            int portnu = recvdpkt.getPort();
            String clientdata = new String(recvdpkt.getData());
-           System.out.println(IP);
-           System.out.println(portnu);
-            System.out.println("\nClient :"+ clientdata);
-            System.out.println("\nServer1 :");
+           System.out.println(IP);// prints out IP Address
+           System.out.println(portnu);// prints out port number
+            System.out.println("\nClient :"+ clientdata);// prints out clients data and response
+            System.out.println("\nServer1 :");// prints out server
           String serverdata = sc.nextLine();
           sendbuffer = serverdata.getBytes();
-          DatagramPacket sendPacket = new DatagramPacket(sendbuffer, sendbuffer.length,IP,portnu);
+          DatagramPacket sendPacket = new DatagramPacket(sendbuffer, sendbuffer.length,IP,portnu);// sends packet to server 
           serverSocket.send(sendPacket);
           if(serverdata.equalsIgnoreCase("bye"))
           {
